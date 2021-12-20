@@ -15,6 +15,16 @@ class ViewController: UIViewController {
         print(isPalindrome(value: "wawa"))
         print(mergeSort([1,3,4,7,2]))
         print(swap(10,5))
+            var array = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8]
+selectionSort(array: &array)
+print(array)
+            print(bubbleSort(array: &array))
+        myQueue.push("first")
+        myQueue.push("second")
+            var aa = [[8, 5, 7, 9, 4, 10], [10, 4, 6, 7, 8, 11]]
+
+            print(twoDswap(arr : 1aa))
+
         // Do any additional setup after loading the view.
     }
 
@@ -96,6 +106,71 @@ class ViewController: UIViewController {
         x = x - y
         print (x,y)
         
+    }
+        func twoDswap(arr:[Int]) -> Int{
+        var i = 0
+var k = 0
+while k < aa.count{
+ while i < aa[k].count {
+            let x = aa[k][i]
+            var j = i - 1
+            while j >= 0 && aa[k][j] > x {
+                aa[k][j+1] = aa[k][j]
+                j -= 1
+            }
+            aa[k][j+1] = x
+            i += 1
+        }
+        }
+}
+        func bubbleSort(array: inout [Int]) -> [Int] {
+  var isSorted = false
+  var counter = 0
+
+  while !isSorted {
+    isSorted = true
+    for i in 0..<array.count - 1 - counter {
+      if array[i] > array[i + 1] {
+        array.swapAt(i, i + 1)
+        isSorted = false
+      }
+    }
+    counter = counter + 1
+  }
+  return array
+}
+    func selectionSort(array: inout [Int]) {
+
+    for currentIndex in 0..<(array.count - 1) {
+        var minIndex = currentIndex;
+        for i in (currentIndex + 1)..<array.count {
+
+            if (array[i] < array[minIndex]) {
+                minIndex = i;
+            }
+        }
+        if (minIndex != currentIndex) {
+            let temp = array[currentIndex];
+            array[currentIndex] = array[minIndex];
+            array[minIndex] = temp;
+        }
+    }
+}
+        struct Queue {
+        private var items: [String] = []
+        
+        func peek() -> String {
+            guard let topElement = items.first else { fatalError("Empty Queue") }
+            return topElement
+        }
+        
+        mutating func pop() -> String {
+            return items.removeLast()
+        }
+      
+        mutating func push(_ element: String) {
+            items.insert(element, at: 0)
+        }
     }
 
 }
